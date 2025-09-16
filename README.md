@@ -21,24 +21,57 @@ Projeto de landing page construída com Next.js 15, React 19, TypeScript e Tailw
 ## Visão Geral
 A ELEGANCE apresenta uma coleção de acessórios masculinos e femininos, com seções de destaque, vitrine por categorias, depoimentos, newsletter e um carrinho lateral moderno que dá feedback imediato ao adicionar itens.
 
-## Demonstrações do Layout
-Crie a pasta `docs/screenshots` e substitua as imagens abaixo pelos seus screenshots (ou ajuste os caminhos):
+- Header (desktop) — `docs/screenshots/header-desktop.png`
 
-- Header e Hero
+![HEADER_DESKTOP](./docs/screenshots/header-desktop.png)
 
-![HEADER_HERO](./docs/screenshots/header-hero.png)
+- Header (mobile) — `docs/screenshots/header-mobile.png`
 
-- Vitrine de Produtos (Masculino/Feminino)
+![HEADER_MOBILE](./docs/screenshots/header-mobile.png)
 
-![VITRINE](./docs/screenshots/vitrine.png)
+- Hero (desktop) — `docs/screenshots/hero-desktop.png`
 
-- Carrinho Lateral Aberto
+![HERO_DESKTOP](./docs/screenshots/hero-desktop.png)
 
-![CARRINHO](./docs/screenshots/carrinho-aberto.png)
+- Vitrine (Tabs — Masculino) — `docs/screenshots/vitrine-masculino.png`
 
-- Newsletter / Depoimentos / Footer
+![VITRINE_MASCULINO](./docs/screenshots/vitrine-masculino.png)
 
-![OUTRAS_SECOES](./docs/screenshots/outras-secoes.png)
+- Vitrine (Tabs — Feminino) — `docs/screenshots/vitrine-feminino.png`
+
+![VITRINE_FEMININO](./docs/screenshots/vitrine-feminino.png)
+
+- Cart Icon + Badge — `docs/screenshots/cart-icon-badge.png`
+
+![CART_ICON_BADGE](./docs/screenshots/cart-icon-badge.png)
+
+- Carrinho Aberto (lista de itens) — `docs/screenshots/carrinho-lista.png`
+
+![CARRINHO_LISTA](./docs/screenshots/carrinho-lista.png)
+
+- Carrinho — Cupom e Frete — `docs/screenshots/carrinho-cupom-frete.png`
+
+![CARRINHO_CUPOM_FRETE](./docs/screenshots/carrinho-cupom-frete.png)
+
+- Carrinho — Resumo/Checkout — `docs/screenshots/carrinho-resumo.png`
+
+![CARRINHO_RESUMO](./docs/screenshots/carrinho-resumo.png)
+
+- Prova Social — `docs/screenshots/social-proof.png`
+
+![SOCIAL_PROOF](./docs/screenshots/social-proof.png)
+
+- Depoimentos — `docs/screenshots/testimonials.png`
+
+![TESTIMONIALS](./docs/screenshots/testimonials.png)
+
+- Newsletter — `docs/screenshots/newsletter.png`
+
+![NEWSLETTER](./docs/screenshots/newsletter.png)
+
+- Footer — `docs/screenshots/footer.png`
+
+![FOOTER](./docs/screenshots/footer.png)
 
 ## Stack e Decisões
 - Next.js 15 (App Router) + React 19 + TypeScript
