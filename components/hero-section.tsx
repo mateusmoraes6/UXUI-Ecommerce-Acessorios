@@ -29,7 +29,7 @@ export default function HeroSection() {
             <Button className="bg-amber-500 hover:bg-amber-600 text-black font-medium text-lg px-8 py-6">
               Explorar Coleção
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
+            <Button variant="outline" className="border-white text-black hover:bg-white/10 text-lg px-8 py-6">
               Conheça Nossa História
             </Button>
           </div>

@@ -8,7 +8,7 @@ import { ShoppingBag, Heart } from "lucide-react"
 import { useState } from "react"
 
 export default function ProductShowcase() {
-  const { addItem } = useCart()
+  const { addItem, setIsOpen } = useCart()
   const [wishlist, setWishlist] = useState<number[]>([])
 
   const products = {
@@ -84,6 +84,7 @@ export default function ProductShowcase() {
 
   const handleAddToCart = (product: any) => {
     addItem(product)
+    setIsOpen(true)
     window.showToast(`${product.name} adicionado ao carrinho!`, "success")
   }
 

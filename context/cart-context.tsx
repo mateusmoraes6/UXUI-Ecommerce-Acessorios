@@ -20,6 +20,8 @@ type CartContextType = {
   isOpen: boolean
   setIsOpen: (isOpen: boolean) => void
   totalItems: number
+  lastAddedId: number | null
+  setLastAddedId: (id: number | null) => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -28,6 +30,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [totalItems, setTotalItems] = useState(0)
+  const [lastAddedId, setLastAddedId] = useState<number | null>(null)
 
   // Carregar carrinho do localStorage quando disponível
   useEffect(() => {
@@ -41,16 +44,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  // Salvar carrinho no localStorage quando atualizado
-  useEffect(() => {
-    if (items.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(items))
-    }
-
-    // Calcular total de itens
-    const total = items.reduce((sum, item) => sum + item.quantity, 0)
-    setTotalItems(total)
-  }, [items])
+    // Salvar carrinho no localStorage quando atualizado
+    useEffect(() => {
+      if (items.length > 0) {
+        localStorage.setItem("cart", JSON.stringify(items))
+      } else {
+        localStorage.removeItem("cart")
+      }
+  
+      // Calcular total de itens
+      const total = items.reduce((sum, item) => sum + item.quantity, 0)
+      setTotalItems(total)
+    }, [items])
 
   const addItem = (product: Omit<CartItem, "quantity">) => {
     setItems((prevItems) => {
@@ -62,6 +67,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         return [...prevItems, { ...product, quantity: 1 }]
       }
     })
+    setLastAddedId(product.id)
   }
 
   const removeItem = (id: number) => {
@@ -93,6 +99,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         isOpen,
         setIsOpen,
         totalItems,
+        lastAddedId,
+        setLastAddedId,
       }}
     >
       {children}

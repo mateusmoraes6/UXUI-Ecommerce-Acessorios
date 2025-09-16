@@ -7,18 +7,22 @@ import { Separator } from "@/components/ui/separator"
 import { ShoppingBag, X, Plus, Minus, ShoppingCart, Trash2, Heart, Truck, CreditCard, ArrowRight } from "lucide-react"
 import { formatPrice } from "@/lib/utils"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import type { RefObject } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { createPortal } from "react-dom"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 export default function Cart() {
-  const { items, removeItem, updateQuantity, isOpen, setIsOpen, totalItems, clearCart, addItem } = useCart()
+  const { items, removeItem, updateQuantity, isOpen, setIsOpen, totalItems, clearCart, addItem, lastAddedId, setLastAddedId } = useCart()
   const [couponCode, setCouponCode] = useState("")
   const [discount, setDiscount] = useState(0)
   const [shippingMethod, setShippingMethod] = useState<string | null>(null)
   const [shippingCost, setShippingCost] = useState(0)
   const [savedForLater, setSavedForLater] = useState<CartItem[]>([])
+  const lastAddedRef = useRef<HTMLDivElement | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   // Fechar o carrinho quando clicar fora dele
   useEffect(() => {
@@ -44,6 +48,24 @@ export default function Cart() {
       document.body.style.overflow = "auto"
     }
   }, [isOpen])
+
+  // Habilitar Portal somente no client
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Quando um item é adicionado, garantir que o carrinho abra e role até o item
+  useEffect(() => {
+    if (lastAddedId != null && items.length > 0) {
+      setIsOpen(true)
+      // Aguardar renderização
+      setTimeout(() => {
+        lastAddedRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+        // Remover destaque após alguns segundos
+        setTimeout(() => setLastAddedId(null), 1500)
+      }, 50)
+    }
+  }, [lastAddedId, items, setIsOpen, setLastAddedId])
 
   // Calcular subtotal
   const subtotal = items.reduce((sum, item) => {
@@ -124,24 +146,27 @@ export default function Cart() {
         </AnimatePresence>
       </Button>
 
-      {/* Overlay do carrinho */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm"
-          >
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              data-cart
-              className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl overflow-hidden flex flex-col"
-            >
+      {/* Overlay do carrinho via Portal para evitar clipping do Header */}
+      {mounted &&
+        createPortal(
+          (
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/50 z-[60] backdrop-blur-sm"
+                >
+                  <motion.div
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                    data-cart
+                    className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl overflow-hidden flex flex-col z-[61]"
+                  >
               {/* Cabeçalho do carrinho */}
               <div className="flex justify-between items-center p-4 border-b">
                 <h2 className="text-xl font-bold flex items-center">
@@ -191,6 +216,8 @@ export default function Cart() {
                               onUpdateQuantity={(quantity) => updateQuantity(item.id, quantity)}
                               onSaveForLater={() => saveForLater(item)}
                               addItem={addItem}
+                              refProp={lastAddedId === item.id ? lastAddedRef : undefined}
+                              isHighlighted={lastAddedId === item.id}
                             />
                           </motion.div>
                         ))}
@@ -409,10 +436,13 @@ export default function Cart() {
                   </div>
                 </div>
               )}
-            </motion.div>
-          </motion.div>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          ),
+          document.body
         )}
-      </AnimatePresence>
     </>
   )
 }
@@ -423,19 +453,28 @@ function CartItemCard({
   onUpdateQuantity,
   onSaveForLater,
   addItem,
+  refProp,
+  isHighlighted,
 }: {
   item: CartItem
   onRemove: () => void
   onUpdateQuantity: (quantity: number) => void
   onSaveForLater: () => void
   addItem: (item: any) => void
+  refProp?: RefObject<HTMLDivElement | null>
+  isHighlighted?: boolean
 }) {
   // Extrair o preço numérico para cálculos
   const priceValue = Number.parseFloat(item.price.replace(/[^\d,]/g, "").replace(",", "."))
   const totalPrice = priceValue * item.quantity
 
   return (
-    <div className="flex border rounded-lg p-3 relative hover:shadow-md transition-shadow">
+    <div
+      ref={refProp}
+      className={`flex border rounded-lg p-3 relative transition-shadow ${
+        isHighlighted ? "ring-2 ring-amber-400 shadow-md" : "hover:shadow-md"
+      }`}
+    >
       <div className="relative group">
         <Image
           src={item.image || "/placeholder.svg"}
