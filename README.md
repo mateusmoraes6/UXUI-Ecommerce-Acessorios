@@ -21,57 +21,43 @@ Projeto de landing page construída com Next.js 15, React 19, TypeScript e Tailw
 ## Visão Geral
 A ELEGANCE apresenta uma coleção de acessórios masculinos e femininos, com seções de destaque, vitrine por categorias, depoimentos, newsletter e um carrinho lateral moderno que dá feedback imediato ao adicionar itens.
 
-- Header (desktop) — `docs/screenshots/header-desktop.png`
+## Demonstrações do Layout
 
-![HEADER_DESKTOP](./docs/screenshots/header-desktop.png)
+- Hero Desktop/Mobile
 
-- Header (mobile) — `docs/screenshots/header-mobile.png`
+<table>
+  <tr>
+    <td align="center"><img src="./docs/screenshots/hero-macbook.png" alt="HERO_DESKTOP" width="420"></td>
+    <td align="center"><img src="./docs/screenshots/hero-iphone.png" alt="HERO_MOBILE" width="220"></td>
+  </tr>
+</table>
 
-![HEADER_MOBILE](./docs/screenshots/header-mobile.png)
+- Vitrine de Produtos (Masculino/Feminino)
 
-- Hero (desktop) — `docs/screenshots/hero-desktop.png`
+<table>
+  <tr>
+    <td align="center"><img src="./docs/screenshots/vitrine-masculino.png" alt="MASCULINO" width="420"></td>
+    <td align="center"><img src="./docs/screenshots/vitrine-feminino.png" alt="FEMININO" width="420"></td>
+  </tr>
+</table>
 
-![HERO_DESKTOP](./docs/screenshots/hero-desktop.png)
+- Carrinho Lateral Aberto
 
-- Vitrine (Tabs — Masculino) — `docs/screenshots/vitrine-masculino.png`
+<p align="center">
+  <img src="./docs/screenshots/carrinho-aberto.png" alt="CARRINHO" width="640" />
+</p>
 
-![VITRINE_MASCULINO](./docs/screenshots/vitrine-masculino.png)
+- Depoimentos
 
-- Vitrine (Tabs — Feminino) — `docs/screenshots/vitrine-feminino.png`
+<p align="center">
+  <img src="./docs/screenshots/depoimentos.png" alt="DEPOIMENTOS" width="640" />
+</p>
 
-![VITRINE_FEMININO](./docs/screenshots/vitrine-feminino.png)
+- Newsletter / Footer
 
-- Cart Icon + Badge — `docs/screenshots/cart-icon-badge.png`
-
-![CART_ICON_BADGE](./docs/screenshots/cart-icon-badge.png)
-
-- Carrinho Aberto (lista de itens) — `docs/screenshots/carrinho-lista.png`
-
-![CARRINHO_LISTA](./docs/screenshots/carrinho-lista.png)
-
-- Carrinho — Cupom e Frete — `docs/screenshots/carrinho-cupom-frete.png`
-
-![CARRINHO_CUPOM_FRETE](./docs/screenshots/carrinho-cupom-frete.png)
-
-- Carrinho — Resumo/Checkout — `docs/screenshots/carrinho-resumo.png`
-
-![CARRINHO_RESUMO](./docs/screenshots/carrinho-resumo.png)
-
-- Prova Social — `docs/screenshots/social-proof.png`
-
-![SOCIAL_PROOF](./docs/screenshots/social-proof.png)
-
-- Depoimentos — `docs/screenshots/testimonials.png`
-
-![TESTIMONIALS](./docs/screenshots/testimonials.png)
-
-- Newsletter — `docs/screenshots/newsletter.png`
-
-![NEWSLETTER](./docs/screenshots/newsletter.png)
-
-- Footer — `docs/screenshots/footer.png`
-
-![FOOTER](./docs/screenshots/footer.png)
+<p align="center">
+  <img src="./docs/screenshots/newsletter-footer.png" alt="NEWSLETTER_FOOTER" width="640" />
+</p>
 
 ## Stack e Decisões
 - Next.js 15 (App Router) + React 19 + TypeScript
@@ -169,4 +155,4 @@ public/
 - Testes E2E (Playwright) para fluxo de carrinho
 
 ---
-Feito com ❤️ para proporcionar uma experiência de compra elegante e moderna.
+Feito com ❤️ para proporcionar uma experiência sofisticada.
