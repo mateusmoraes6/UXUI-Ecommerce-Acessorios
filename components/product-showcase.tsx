@@ -23,16 +23,16 @@ export default function ProductShowcase() {
       },
       {
         id: 2,
-        name: "Pulseira de Couro Trançado",
-        price: "R$ 289,00",
+        name: "Pulseira de Couro",
+        price: "R$ 189,00",
         image:
-          "https://images.unsplash.com/photo-1618151313441-bc79b11e5090?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1640551855927-78d8ce33c586?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "Pulseiras",
       },
       {
         id: 3,
         name: "Carteira Slim Executive",
-        price: "R$ 349,00",
+        price: "R$ 149,00",
         image:
           "https://images.unsplash.com/photo-1627123424574-724758594e93?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
         category: "Carteiras",
@@ -42,21 +42,13 @@ export default function ProductShowcase() {
         name: "Gravata Seda Premium",
         price: "R$ 199,00",
         image:
-          "https://images.unsplash.com/photo-1598879445146-5a1d1f0cafb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+          "https://images.unsplash.com/photo-1589756823695-278bc923f962?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         category: "Gravatas",
       },
     ],
     feminino: [
       {
         id: 5,
-        name: "Colar Veneziano Ouro Rosé",
-        price: "R$ 459,00",
-        image:
-          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        category: "Colares",
-      },
-      {
-        id: 6,
         name: "Brincos Cristal Swarovski",
         price: "R$ 389,00",
         image:
@@ -64,7 +56,7 @@ export default function ProductShowcase() {
         category: "Brincos",
       },
       {
-        id: 7,
+        id: 6,
         name: "Pulseira Charm Personalizada",
         price: "R$ 299,00",
         image:
@@ -72,8 +64,16 @@ export default function ProductShowcase() {
         category: "Pulseiras",
       },
       {
+        id: 7,
+        name: "Colar Veneziano Ouro Rosé",
+        price: "R$ 459,00",
+        image:
+          "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
+        category: "Colares",
+      },
+      {
         id: 8,
-        name: "Anel Ajustável Zircônia",
+        name: "Anel de Zircônia",
         price: "R$ 249,00",
         image:
           "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
